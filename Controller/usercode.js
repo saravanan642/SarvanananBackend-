@@ -35,4 +35,7 @@ const createrUser = async (req, res) => {
     }
 }
 
+
+const fecthUser 
+
 module.exports = createrUser;

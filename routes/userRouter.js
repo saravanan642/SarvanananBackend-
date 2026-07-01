@@ -5,4 +5,6 @@ const router = express.Router()
 
 router.post("/new_user",createrUser)
 
+router.get('/fetch-user',)
+
 module.exports = router
