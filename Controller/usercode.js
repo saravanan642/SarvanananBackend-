@@ -110,7 +110,7 @@ const updateuser = async (req, res) => {
         if(!user){
             return res.json({ success : false, message :"user not found"})
         }
-        return res.json({success: true , message : "user update successfully " , data :user})
+        return res.json({success:true, message : "user update successfully " , data :user})
 
     } catch(error) {
         {
