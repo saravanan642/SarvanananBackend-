@@ -1,5 +1,5 @@
 const Modeluser = require("../Models/user")
-
+//post method //
 const createrUser = async (req, res) => {
     try{
         const{ name, email, age, password, phone, address, gender,isActive,dob,profileImage,skills,marks}=req.body
@@ -28,14 +28,48 @@ const createrUser = async (req, res) => {
             return res.json({success :false, message :"Failed to create please try again later" })
         }
 
-        return res.json({success : true , message : "Account cretaed successfully" })
+        return res.json({success : true , message : "Account cretaed successfully",save })
 
     }catch(err){
         console.log("Error in create user",err.message)
     }
+};
+
+//get method//
+const fetchUser = async(req ,res)=>{
+    try{
+
+        const user = await Modeluser.find({})
+        
+        if(!user){
+            return res.json({success:  false , message : "user notfound "})
+        }
+        return res.json({success : true , message : "user featch successfully", data : user})
+    }catch{
+
+    }
 }
 
+const fetchUserEmail = async (req , res)=>{
+    try{
+        const email = req.params
+        
+        const user = await Modeluser.findOne(email)
 
-const fecthUser 
+        if(!user){
+            return res.json({ success : false , message : "user not found"})
+        }
+        return res.json({succes : true , message : "user fethch mail successfully",data : user })
+    }catch(err){
+        console.log("Error in fetch user")
+        return res.json({success : false , message : "Error in fetch user"})
+    }  
+    }
 
-module.exports = createrUser;
+
+module.exports = {
+    createrUser,
+    fetchUser,
+    fetchUserEmail
+
+};  
