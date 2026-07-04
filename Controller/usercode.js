@@ -112,7 +112,7 @@ const updateuser = async (req, res) => {
         }
         return res.json({success: true , message : "user update successfully " , data :user})
 
-    } catch(err) {
+    } catch(error) {
         {
             console.log(err);
             return res.json({
