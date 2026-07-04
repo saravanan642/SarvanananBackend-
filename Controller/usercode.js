@@ -104,22 +104,21 @@ const updateuser = async (req, res) => {
     try {
         const {email} = req.params;
 
-        const user = await Modeluser.findByIdAndUpdate(email ,req.body,{new:true});
+       const user = await Modeluser.findOneAndUpdate( { email: email }, req.body,{ new: true }
+);
 
         if(!user){
             return res.json({ success : false, message :"user not found"})
         }
-        return res.json({success: true , message : "user update successfully "})
+        return res.json({success: true , message : "user update successfully " , data :user})
 
-    } catch {
+    } catch(err) {
         {
-           
-   console.log(error);
-
-   return res.json({
-      success: false,
-      message: "Error in update user"
-   });
+            console.log(err);
+            return res.json({
+                success: false,
+                message: "Error in update candidate"
+            });
         }
     }
 }
